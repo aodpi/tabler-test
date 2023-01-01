@@ -1,0 +1,53 @@
+<div class="navbar-expand-md">
+    <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="navbar navbar-light">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li *ngFor="let item of items" class="nav-item"
+                        [ngClass]="{ 'active': isActive(item), 'dropdown': item.items }">
+                        <a class="nav-link" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                            [ngClass]="{ 'dropdown-toggle': item.items }" [routerLink]="[item.link]">
+
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <i class="ti" [ngClass]="item.iconClass"></i>
+                            </span>
+
+                            <span class="nav-link-title">
+                                {{item.name}}
+                            </span>
+                        </a>
+
+                        <div *ngIf="item.items" class="dropdown-menu">
+                            <div *ngFor="let subItem of item.items" class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+                                    <a class="dropdown-item" [routerLink]="subItem.link">
+                                        {{subItem.name}}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+                <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+                    <form action="." method="get">
+                        <div class="input-icon">
+                            <span class="input-icon-addon">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <circle cx="10" cy="10" r="7" />
+                                    <line x1="21" y1="21" x2="15" y2="15" />
+                                </svg>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Search…"
+                                aria-label="Search in website">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
